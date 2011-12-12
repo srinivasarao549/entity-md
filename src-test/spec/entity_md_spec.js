@@ -1,69 +1,69 @@
-describe("adding and removing objects from om.objects", function(){
+describe("adding and removing objects fre_md e_md.objects", function(){
 
-    it("must store an object in om.objects, and return that object when adding", function(){
-        var om = anew(entity_md),
-            obj = om.add({x: 3})
+    it("must store an object in e_md.objects, and return that object when adding", function(){
+        var e_md = anew(entity_md),
+            obj = e_md.add({x: 3})
 
-        expect(om.objects.indexOf(obj) != -1).toBeTruthy()
+        expect(e_md.objects.indexOf(obj) != -1).toBeTruthy()
     })
     
-    it("must remove objects from om.objects on request", function(){
-        var om = anew(entity_md),
-            obj = om.add({x: 2}),
-            obj2 = om.add({x: 2})
+    it("must remove objects fre_md e_md.objects on request", function(){
+        var e_md = anew(entity_md),
+            obj = e_md.add({x: 2}),
+            obj2 = e_md.add({x: 2})
         
-        expect(om.objects.indexOf(obj) != -1).toBeTruthy()
-        expect(om.objects.indexOf(obj2) != -1).toBeTruthy()
+        expect(e_md.objects.indexOf(obj) != -1).toBeTruthy()
+        expect(e_md.objects.indexOf(obj2) != -1).toBeTruthy()
 
-        om.remove(obj)            
-        expect(om.objects.indexOf(obj) != -1).toBeFalsy()
-        expect(om.objects.indexOf(obj2) != -1).toBeTruthy()
+        e_md.remove(obj)            
+        expect(e_md.objects.indexOf(obj) != -1).toBeFalsy()
+        expect(e_md.objects.indexOf(obj2) != -1).toBeTruthy()
         
     })
 
-    it("must not delete any extant objects if a non-om object is submitted to remove", function(){
-        var om = anew(entity_md),
-            obj = om.add({x: 2}),
-            obj2 = om.add({x: 2})
+    it("must not delete any extant objects if a non-e_md object is submitted to remove", function(){
+        var e_md = anew(entity_md),
+            obj = e_md.add({x: 2}),
+            obj2 = e_md.add({x: 2})
         
-        expect(om.objects.indexOf(obj) != -1).toBeTruthy()
-        expect(om.objects.indexOf(obj2) != -1).toBeTruthy()
+        expect(e_md.objects.indexOf(obj) != -1).toBeTruthy()
+        expect(e_md.objects.indexOf(obj2) != -1).toBeTruthy()
 
-        om.remove({x: 2})            
-        expect(om.objects.indexOf(obj) != -1).toBeTruthy()
-        expect(om.objects.indexOf(obj2) != -1).toBeTruthy()            
+        e_md.remove({x: 2})            
+        expect(e_md.objects.indexOf(obj) != -1).toBeTruthy()
+        expect(e_md.objects.indexOf(obj2) != -1).toBeTruthy()            
     })
     
     it("must allow removal of all objects", function(){
-        var om = anew(entity_md),
-            obj = om.add({x: 2}),
-            obj2 = om.add({x: 2})
+        var e_md = anew(entity_md),
+            obj = e_md.add({x: 2}),
+            obj2 = e_md.add({x: 2})
         
-        expect(om.objects.indexOf(obj) != -1).toBeTruthy()
-        expect(om.objects.indexOf(obj2) != -1).toBeTruthy()
+        expect(e_md.objects.indexOf(obj) != -1).toBeTruthy()
+        expect(e_md.objects.indexOf(obj2) != -1).toBeTruthy()
 
-        om.remove_all()
+        e_md.remove_all()
                     
-        expect(om.objects.indexOf(obj) != -1).toBeFalsy()
-        expect(om.objects.indexOf(obj2) != -1).toBeFalsy()
-        expect(om.objects.length).toEqual(0)
+        expect(e_md.objects.indexOf(obj) != -1).toBeFalsy()
+        expect(e_md.objects.indexOf(obj2) != -1).toBeFalsy()
+        expect(e_md.objects.length).toEqual(0)
     })
 
 
 })
 
-describe("finding objects from om.object", function(){
+describe("finding objects fre_md e_md.object", function(){
 
     it("must be able to find objects by their constructor", function(){
-        var om = anew(entity_md),
+        var e_md = anew(entity_md),
             C = function(){ this.x = 1}
             
-        om.add(new C)
-        om.add(new C)
-        om.add(new C)
+        e_md.add(new C)
+        e_md.add(new C)
+        e_md.add(new C)
 
         // try finding with the ctor
-        var objs = om.find_instances(C)
+        var objs = e_md.find_instances(C)
 
         objs.forEach(function(o){
             expect(o.x).toEqual(1)
@@ -71,23 +71,23 @@ describe("finding objects from om.object", function(){
 
         expect(objs.length).toEqual(3)            
         
-        // try something that's not it's ctor, but still in chain
-        objs = om.find_instances(Object)
+        // try se_mdething that's not it's ctor, but still in chain
+        objs = e_md.find_instances(Object)
         expect(objs.length).toEqual(0)
     })
 
     it("must be able to find objects by their constructor with submitted array", function(){
-        var om = anew(entity_md),
+        var e_md = anew(entity_md),
             C = function(){ this.x = 1},    
-            obj1 = om.add(new C),
-            obj2 = om.add(new C),
-            obj3 = om.add({x: 2})
+            obj1 = e_md.add(new C),
+            obj2 = e_md.add(new C),
+            obj3 = e_md.add({x: 2})
             
                 
-        om.add(new C)
+        e_md.add(new C)
 
         // try finding with the ctor
-        var objs = om.find_instances(C, [obj1, obj2, obj3])
+        var objs = e_md.find_instances(C, [obj1, obj2, obj3])
 
         objs.forEach(function(o){
             expect(o.x).toEqual(1)
@@ -95,78 +95,77 @@ describe("finding objects from om.object", function(){
 
         expect(objs.length).toEqual(2)            
         
-        // try something that's not it's ctor, but still in chain
-        objs = om.find_instances(Object, [obj1, obj2, obj3])
+        // try se_mdething that's not it's ctor, but still in chain
+        objs = e_md.find_instances(Object, [obj1, obj2, obj3])
         expect(objs.length).toEqual(1)
     })
 
     it("must be able to find objects by distance", function(){
-        var om = anew(entity_md)
+        var e_md = anew(entity_md)
         
-        om.add({x: 1, y: 2})
-        om.add({x: 1.2, y: 3})
-        om.add({x: 2, y: 2})
+        e_md.add({x: 1, y: 2})
+        e_md.add({x: 1.2, y: 3})
+        e_md.add({x: 2, y: 2})
         
         
-        var obj = om.find_nearest({x: 0, y: 0})
+        var obj = e_md.find_nearest({x: 0, y: 0})
         
         expect(obj.x).toEqual(1)
         
     })
     
     it("must be able to find objects by distance with submitted array", function(){
-        var om = anew(entity_md),
-            obj1 = om.add({x: 1, y: 2}),
-            obj2 = om.add({x: 1.2, y: 3}),
-            obj3 = om.add({x: 2, y: 2})
+        var e_md = anew(entity_md),
+            obj1 = e_md.add({x: 1, y: 2}),
+            obj2 = e_md.add({x: 1.2, y: 3}),
+            obj3 = e_md.add({x: 2, y: 2})
         
         
-        var obj = om.find_nearest({x: 0, y: 0}, [obj2, obj3])
+        var obj = e_md.find_nearest({x: 0, y: 0}, [obj2, obj3])
         
         expect(obj).toEqual(obj3)
         
     })
     
-    it("must be able to find objects by ID", function(){
+    it("must be able to find objects by attr", function(){
         
-        var om = anew(entity_md)
+        var e_md = anew(entity_md)
         
-        om.add({x: 1, y: 2, id: "colbert"})
-        om.add({x: 1, y: 3})
-        om.add({x: 2, y: 2})
+        e_md.add({x: 1, y: 2, id: "colbert"})
+        e_md.add({x: 1, y: 3})
+        e_md.add({x: 2, y: 2})
         
-        var obj = om.find_by_id("colbert")
+        var obj = e_md.find_by_attr({id: "colbert"})
         
-        expect(obj.x).toEqual(1)
+        expect(obj[0].x).toEqual(1)
     })
     
-    it("must return undefined if no object with ID is found", function(){
+    it("must return empty if no object with attrs is found", function(){
         
-        var om = anew(entity_md)
+        var e_md = anew(entity_md)
         
-        om.add({x: 1, y: 2, id: "colbert"})
-        om.add({x: 1, y: 3})
-        om.add({x: 2, y: 2})
+        e_md.add({x: 1, y: 2, id: "colbert"})
+        e_md.add({x: 1, y: 3})
+        e_md.add({x: 2, y: 2})
         
-        var obj = om.find_by_id("colberta")
+        var objs = e_md.find_by_attr({id: "colberta"})
         
-        expect(obj).toEqual(undefined)
+        expect(objs.length).toEqual(0)
     })
 
     it("must return objects by ID with submitted array", function(){
-        var om = anew(entity_md)
+        var e_md = anew(entity_md),
+            obj1 = {x: 1, y: 2, id: "colbert"},
+            obj2 = {x: 1, y: 3},
+            obj3 = {x: 2, y: 2}
+
+        e_md.add(obj1)
+        e_md.add(obj2)
+        e_md.add(obj3)
         
-        om.add({x: 1, y: 2, id: "colbert"})
-        om.add({x: 1, y: 3})
-        om.add({x: 2, y: 2})
+        var obj = e_md.find_by_attr({id: "colbert"}, [obj1, obj3])
         
-        var obj = om.find_by_id("colbert")
-        
-        expect(obj.x).toEqual(1)
+        expect(obj[0]).toBe(obj1)
     })
     
-    // QUESTIONS:
-    
-    // * What should happen if there's more than one objects with an ID?
-    // * Should duplicate ids be allowed in
 })

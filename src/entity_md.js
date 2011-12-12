@@ -64,14 +64,23 @@ void function(context){
             return nearest_obj
         },
 
-        find_by_id: function(id, obj_set){
-            var objs = obj_set || this.objects,
-                obj = null
-                
-            objs.forEach(function(o){
-                if ( o.id == id ) obj = o
+        find_by_attr: function(attr_object, object_set){
+            var search_in = object_set || this.objects,
+                objects
+
+            function check_attrs(attr_object, object){
+                var success = false
+                Object.keys(attr_object).forEach(function(key){
+                    if ( object[key] == attr_object[key] ) success = true
+                })
+                return success
+            }
+
+            objects = search_in.filter(function(object){
+                return check_attrs(attr_object, object)
             })
-            return obj
+            
+            return objects
         }
         
     };
