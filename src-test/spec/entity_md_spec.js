@@ -1,14 +1,14 @@
 describe("adding and removing objects from om.objects", function(){
 
     it("must store an object in om.objects, and return that object when adding", function(){
-        var om = new entity_md(),
+        var om = anew(entity_md),
             obj = om.add({x: 3})
 
         expect(om.objects.indexOf(obj) != -1).toBeTruthy()
     })
     
     it("must remove objects from om.objects on request", function(){
-        var om = new entity_md(),
+        var om = anew(entity_md),
             obj = om.add({x: 2}),
             obj2 = om.add({x: 2})
         
@@ -22,7 +22,7 @@ describe("adding and removing objects from om.objects", function(){
     })
 
     it("must not delete any extant objects if a non-om object is submitted to remove", function(){
-        var om = new entity_md(),
+        var om = anew(entity_md),
             obj = om.add({x: 2}),
             obj2 = om.add({x: 2})
         
@@ -35,7 +35,7 @@ describe("adding and removing objects from om.objects", function(){
     })
     
     it("must allow removal of all objects", function(){
-        var om = new entity_md(),
+        var om = anew(entity_md),
             obj = om.add({x: 2}),
             obj2 = om.add({x: 2})
         
@@ -55,7 +55,7 @@ describe("adding and removing objects from om.objects", function(){
 describe("finding objects from om.object", function(){
 
     it("must be able to find objects by their constructor", function(){
-        var om = new entity_md(),
+        var om = anew(entity_md),
             C = function(){ this.x = 1}
             
         om.add(new C)
@@ -77,7 +77,7 @@ describe("finding objects from om.object", function(){
     })
 
     it("must be able to find objects by their constructor with submitted array", function(){
-        var om = new entity_md(),
+        var om = anew(entity_md),
             C = function(){ this.x = 1},    
             obj1 = om.add(new C),
             obj2 = om.add(new C),
@@ -101,7 +101,7 @@ describe("finding objects from om.object", function(){
     })
 
     it("must be able to find objects by distance", function(){
-        var om = new entity_md()
+        var om = anew(entity_md)
         
         om.add({x: 1, y: 2})
         om.add({x: 1.2, y: 3})
@@ -115,7 +115,7 @@ describe("finding objects from om.object", function(){
     })
     
     it("must be able to find objects by distance with submitted array", function(){
-        var om = new entity_md(),
+        var om = anew(entity_md),
             obj1 = om.add({x: 1, y: 2}),
             obj2 = om.add({x: 1.2, y: 3}),
             obj3 = om.add({x: 2, y: 2})
@@ -129,7 +129,7 @@ describe("finding objects from om.object", function(){
     
     it("must be able to find objects by ID", function(){
         
-        var om = new entity_md()
+        var om = anew(entity_md)
         
         om.add({x: 1, y: 2, id: "colbert"})
         om.add({x: 1, y: 3})
@@ -142,7 +142,7 @@ describe("finding objects from om.object", function(){
     
     it("must return undefined if no object with ID is found", function(){
         
-        var om = new entity_md()
+        var om = anew(entity_md)
         
         om.add({x: 1, y: 2, id: "colbert"})
         om.add({x: 1, y: 3})
@@ -154,7 +154,7 @@ describe("finding objects from om.object", function(){
     })
 
     it("must return objects by ID with submitted array", function(){
-        var om = new entity_md()
+        var om = anew(entity_md)
         
         om.add({x: 1, y: 2, id: "colbert"})
         om.add({x: 1, y: 3})

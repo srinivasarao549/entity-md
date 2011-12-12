@@ -1,48 +1,38 @@
-void function(){
+void function(context){
 
    // main controlling object
-    var entity_md = function(){
-        this.objects = []
-        this.objects_modified = false
-    }
+    var entity_md = {
+        
+        // ctor and attrs
+        init: function(){
+            this.objects = []
+        },
+        objects_modified: false,
     
-    entity_md.prototype = (function(){
-        
-        return {
-            // object tracking methods
-            add: add,
-            remove: remove,
-            remove_all: remove_all,
-            find_instances: find_instances,
-            find_nearest: find_nearest,
-            find_by_id: find_by_id,
-        }
-        
-        
 //----------------------------------------------------------//
 //              OBJECT TRACKING METHODS
 //----------------------------------------------------------//
     
-        function add(object){
+        add: function(object){
             // store
             this.objects.push(object)
             this.objects_modified = true
             return object
-        }        
+        },
                 
-        function remove(object){
+        remove: function(object){
             var index = this.objects.indexOf(object)
             if ( index >= 0 ){
                 this.objects.splice(index, 1)      
                 this.objects_modified = true                      
             }
-        }
+        },
         
-        function remove_all(){
+        remove_all: function(){
             this.objects = []
-        }
+        },
         
-        function find_instances(ctor, obj_set){
+        find_instances: function(ctor, obj_set){
             var objs = obj_set || this.objects,
                 return_objs = []
             
@@ -51,9 +41,9 @@ void function(){
                     return_objs.push(o)
             })
             return return_objs
-        }
+        },
         
-        function find_nearest(reference_object, obj_set){
+        find_nearest: function(reference_object, obj_set){
             var objs = obj_set || this.objects,
                 nearest_obj, nearest_distance
             
@@ -72,9 +62,9 @@ void function(){
             })
 
             return nearest_obj
-        }
+        },
 
-        function find_by_id(id, obj_set){
+        find_by_id: function(id, obj_set){
             var objs = obj_set || this.objects,
                 obj = null
                 
@@ -84,9 +74,8 @@ void function(){
             return obj
         }
         
-        
-    })()
+    };
 
-    window["entity_md"] = entity_md
+    context["entity_md"] = entity_md
 
-}()
+}(this)
