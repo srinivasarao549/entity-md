@@ -5,9 +5,9 @@ void function(context){
         
         // ctor and attrs
         init: function(){
-            this._objects = []
+            this._entities = []
         },
-        _objects_modified: false,
+        _entities_modified: false,
     
 //----------------------------------------------------------//
 //              OBJECT TRACKING METHODS
@@ -15,25 +15,25 @@ void function(context){
     
         add: function(object){
             // store
-            this._objects.push(object)
-            this._objects_modified = true
+            this._entities.push(object)
+            this._entities_modified = true
             return object
         },
                 
         remove: function(object){
-            var index = this._objects.indexOf(object)
+            var index = this._entities.indexOf(object)
             if ( index >= 0 ){
-                this._objects.splice(index, 1)      
-                this._objects_modified = true                      
+                this._entities.splice(index, 1)      
+                this._entities_modified = true                      
             }
         },
         
         remove_all: function(){
-            this._objects = []
+            this._entities = []
         },
         
         find_instances: function(ctor, obj_set){
-            var objs = obj_set || this._objects,
+            var objs = obj_set || this._entities,
                 return_objs = []
             
             objs.forEach(function(o){
@@ -44,7 +44,7 @@ void function(context){
         },
         
         find_nearest: function(reference_object, obj_set){
-            var objs = obj_set || this._objects,
+            var objs = obj_set || this._entities,
                 nearest_obj, nearest_distance
             
             objs.forEach(function(o){
@@ -65,7 +65,7 @@ void function(context){
         },
 
         find_by_attr: function(attr_object, object_set){
-            var search_in = object_set || this._objects,
+            var search_in = object_set || this._entities,
                 objects
 
             function check_attrs(attr_object, object){

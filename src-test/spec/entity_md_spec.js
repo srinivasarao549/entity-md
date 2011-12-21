@@ -1,23 +1,23 @@
-describe("adding and removing objects fre_md e_md._objects", function(){
+describe("adding and removing objects fre_md e_md._entities", function(){
 
-    it("must store an object in e_md._objects, and return that object when adding", function(){
+    it("must store an object in e_md._entities, and return that object when adding", function(){
         var e_md = anew(entity_md),
             obj = e_md.add({x: 3})
 
-        expect(e_md._objects.indexOf(obj) != -1).toBeTruthy()
+        expect(e_md._entities.indexOf(obj) != -1).toBeTruthy()
     })
     
-    it("must remove objects fre_md e_md._objects on request", function(){
+    it("must remove objects fre_md e_md._entities on request", function(){
         var e_md = anew(entity_md),
             obj = e_md.add({x: 2}),
             obj2 = e_md.add({x: 2})
         
-        expect(e_md._objects.indexOf(obj) != -1).toBeTruthy()
-        expect(e_md._objects.indexOf(obj2) != -1).toBeTruthy()
+        expect(e_md._entities.indexOf(obj) != -1).toBeTruthy()
+        expect(e_md._entities.indexOf(obj2) != -1).toBeTruthy()
 
         e_md.remove(obj)            
-        expect(e_md._objects.indexOf(obj) != -1).toBeFalsy()
-        expect(e_md._objects.indexOf(obj2) != -1).toBeTruthy()
+        expect(e_md._entities.indexOf(obj) != -1).toBeFalsy()
+        expect(e_md._entities.indexOf(obj2) != -1).toBeTruthy()
         
     })
 
@@ -26,12 +26,12 @@ describe("adding and removing objects fre_md e_md._objects", function(){
             obj = e_md.add({x: 2}),
             obj2 = e_md.add({x: 2})
         
-        expect(e_md._objects.indexOf(obj) != -1).toBeTruthy()
-        expect(e_md._objects.indexOf(obj2) != -1).toBeTruthy()
+        expect(e_md._entities.indexOf(obj) != -1).toBeTruthy()
+        expect(e_md._entities.indexOf(obj2) != -1).toBeTruthy()
 
         e_md.remove({x: 2})            
-        expect(e_md._objects.indexOf(obj) != -1).toBeTruthy()
-        expect(e_md._objects.indexOf(obj2) != -1).toBeTruthy()            
+        expect(e_md._entities.indexOf(obj) != -1).toBeTruthy()
+        expect(e_md._entities.indexOf(obj2) != -1).toBeTruthy()            
     })
     
     it("must allow removal of all objects", function(){
@@ -39,14 +39,14 @@ describe("adding and removing objects fre_md e_md._objects", function(){
             obj = e_md.add({x: 2}),
             obj2 = e_md.add({x: 2})
         
-        expect(e_md._objects.indexOf(obj) != -1).toBeTruthy()
-        expect(e_md._objects.indexOf(obj2) != -1).toBeTruthy()
+        expect(e_md._entities.indexOf(obj) != -1).toBeTruthy()
+        expect(e_md._entities.indexOf(obj2) != -1).toBeTruthy()
 
         e_md.remove_all()
                     
-        expect(e_md._objects.indexOf(obj) != -1).toBeFalsy()
-        expect(e_md._objects.indexOf(obj2) != -1).toBeFalsy()
-        expect(e_md._objects.length).toEqual(0)
+        expect(e_md._entities.indexOf(obj) != -1).toBeFalsy()
+        expect(e_md._entities.indexOf(obj2) != -1).toBeFalsy()
+        expect(e_md._entities.length).toEqual(0)
     })
 
 
