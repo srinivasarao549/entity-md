@@ -68,12 +68,13 @@ describe("finding objects fre_md e_md.object", function(){
         objs.forEach(function(o){
             expect(o.x).toEqual(1)
         })
-
+        
+        console.log(e_md._entities)
         expect(objs.length).toEqual(3)            
         
-        // try se_mdething that's not it's ctor, but still in chain
+        // still instances of 
         objs = e_md.find_instances(Object)
-        expect(objs.length).toEqual(0)
+        expect(objs.length).toEqual(3)
     })
 
     it("must be able to find objects by their constructor with submitted array", function(){
@@ -95,9 +96,8 @@ describe("finding objects fre_md e_md.object", function(){
 
         expect(objs.length).toEqual(2)            
         
-        // try se_mdething that's not it's ctor, but still in chain
         objs = e_md.find_instances(Object, [obj1, obj2, obj3])
-        expect(objs.length).toEqual(1)
+        expect(objs.length).toEqual(3)
     })
 
     it("must be able to find objects by distance", function(){
