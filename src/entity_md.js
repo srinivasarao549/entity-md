@@ -83,7 +83,7 @@ void function(root){
 
     entity_md.constructor()
 
-    if ( typeof module !== "undefined" && typeof module["exports"] !== "undefined")
+    if (typeof module !== 'undefined' && module.exports) {
         module["exports"] = entity_md
     else 
         root["entity_md"] = entity_md
