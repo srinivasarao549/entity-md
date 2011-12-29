@@ -1,4 +1,4 @@
-void function(context){
+void function(root){
 
    // main controlling object
     var entity_md = {
@@ -83,6 +83,9 @@ void function(context){
 
     entity_md.constructor()
 
-    context["entity_md"] = entity_md
+    if ( typeof module !== "undefined" && typeof module["exports"] !== "undefined")
+        module["exports"] = entity_md
+    else 
+        root["entity_md"] = entity_md
 
 }(this)
