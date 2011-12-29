@@ -82,8 +82,9 @@ void function(context){
             
             return objects
         }
-        
     };
+
+    entity_md.constructor()
 
     context["entity_md"] = entity_md
 
